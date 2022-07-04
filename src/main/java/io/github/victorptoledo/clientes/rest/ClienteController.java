@@ -1,4 +1,4 @@
-package io.github.victorptoledo.clientes.model.rest;
+package io.github.victorptoledo.clientes.rest;
 
 import io.github.victorptoledo.clientes.model.entity.Cliente;
 import io.github.victorptoledo.clientes.model.repository.ClienteRepository;
@@ -27,7 +27,7 @@ public class ClienteController {
     }
     @GetMapping("{id}")
     public Cliente acharPorId( @PathVariable Integer id) {
-        return repository.findById(id).orElseThrow( () -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+        return repository.findById(id).orElseThrow( () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Cliente não encontrado"));
     }
     
     @DeleteMapping("{id}")
